@@ -14,10 +14,17 @@ file_name = "NFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1) #random ordering of the data points
 x = df.to_numpy()[:, 0:12]
-# x = preprocessing.normalize(x)
+
+# Scale data before applying PCA
+scaling=preprocessing.StandardScaler()
+
+# Use fit and transform method
+scaling.fit(x)
+Scaled_data=scaling.transform(x)
+
 y = df.to_numpy()[:, 12]
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.25, random_state=42)
-# print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
+x_train, x_test, y_train, y_test = train_test_split(Scaled_data, y, test_size=0.25, random_state=42)
+print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
 
 
 
@@ -27,12 +34,11 @@ num_iters = 1000
 reg = LogisticRegression(max_iter = num_iters)
 reg.fit(x_train, y_train)
 y_pred = reg.predict(x_test)
-print(y_test, y_pred)
-
+# print(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred, labels=reg.classes_)
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=reg.classes_)
 disp.plot()
-# plt.show()
+plt.show()
 
 
 print("Accuracy = ", metrics.accuracy_score(y_test, y_pred))
