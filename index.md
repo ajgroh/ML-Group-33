@@ -22,15 +22,9 @@ For our group project proposal we are trying to accurately predict the record fo
 
 
 ### References
-<p>
-  [1] h
-</p>
-<p>
-  [2] h
-</p>
-<p>
-  [3] https://www.sportingnews.com/us/nfl/news/how-does-the-nfl-draft-work-rules-rounds-eligibility-and-more/o431yshp0l431e7543pcrzpg1
-</p>
+  [1] h <br/>
+  [2] h <br/>
+  [3] https://www.sportingnews.com/us/nfl/news/how-does-the-nfl-draft-work-rules-rounds-eligibility-and-more/o431yshp0l431e7543pcrzpg1 <br/>
 
 
 ## Welcome to GitHub Pages
