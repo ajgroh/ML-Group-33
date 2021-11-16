@@ -8,7 +8,7 @@ pd.set_option('display.max_colwidth',5000)
 
 ####### Write Header of CSV data file ##########
 column_names = ["PointsPerGame", "PointsAgainstPerGame", "Off1stDownsPerGame", "1stDownsGivenPerGame", "OffTotalYardsPerGame", "YardsGivenUpPerGame", "OffPassYardsPerGame", "PassYardsGivenUpPerGame", "OffRushYardsPerGame", "RushYardsGivenUpPerGame", "OffTurnoversPerGame", "TurnoversCausedPerGame", "MadePlayoffs"]
-file_name = "NFLData.csv"
+file_name = "./Data/NFLData.csv"
 
 with open(file_name, 'w') as csv_file:
     csvwriter = csv.writer(csv_file)
@@ -25,7 +25,7 @@ with open(file_name, 'w') as csv_file:
     #######OPEN AND EDIT FILES##########
     i = 0 #to index through label data
     for file in data_files:
-        df = pd.read_csv(file)
+        df = pd.read_csv("./Data/" + file)
 
         #removes blank first row
         new_header = df.iloc[0] #grab the first row for the header

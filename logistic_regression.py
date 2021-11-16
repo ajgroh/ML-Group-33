@@ -9,8 +9,7 @@ from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-file_name = "NFLData.csv"
-
+file_name = "./Data/NFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1) #random ordering of the data points
 x = df.to_numpy()[:, 0:12]

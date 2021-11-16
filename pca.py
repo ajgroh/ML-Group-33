@@ -12,8 +12,7 @@ from sklearn import metrics
 
 
 
-file_name = "NFLData.csv"
-
+file_name = "./Data/NFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1) #random ordering of the data points
 x = df.to_numpy()[:, 0:12]
