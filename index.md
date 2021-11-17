@@ -32,11 +32,17 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
 <p align="center">
   Best-Case Logistic Regression with PCA: 
 </p>
+<p align="center">
+  <img src="/img/PCAGood.png" alt="PCAGood">
+</p>
 
 ![GoodPCA](/img/PCAGood.png)
 
 <p align="center">
   Worst-Case Logistic Regression with PCA: 
+</p>
+<p align="center">
+  <img src="/img/PCABadd.png" alt="PCABad">
 </p>
 
 ![BadPCA](/img/PCABad.png)
@@ -44,11 +50,17 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
 <p align="center">
   Best-Case Logistic Regression without PCA: 
 </p>
+<p align="center">
+  <img src="/img/LogRegGood.png" alt="LogRegGood">
+</p>
 
 ![GoodLogReg](/img/LogRegGood.png)
 
 <p align="center">
   Worst-Case Logistic Regression without PCA: 
+</p>
+<p align="center">
+  <img src="/img/LogRegBad.png" alt="LogRegBad">
 </p>
 
 ![BadLogReg](/img/LogRegGood.png)
@@ -56,11 +68,17 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
 <p align="center">
   Best-Case Linear Regression without PCA: 
 </p>
+<p align="center">
+  <img src="/img/LinRegGood.png" alt="LinRegGood">
+</p>
 
 ![GoodLinReg](/img/LinRegGood.png)
 
 <p align="center">
   Worst-Case Linear Regression without PCA: 
+</p>
+<p align="center">
+  <img src="/img/LinRegBad.png" alt="LinRegBad">
 </p>
 
 ![BadLinReg](/img/LinRegBad.png)
