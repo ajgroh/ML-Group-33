@@ -42,7 +42,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Worst-Case Logistic Regression with PCA: 
 </p>
 <p align="center">
-  <img src="/img/PCABadd.png" alt="PCABad">
+  <img src="/img/PCABad.png" alt="PCABad">
 </p>
 
 ![BadPCA](/img/PCABad.png)
