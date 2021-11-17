@@ -14,7 +14,7 @@ By creating a model that provides teams with a reasonable estimation on whether 
 
 For this project we manually retreived our data from multiple datasets on the Pro Football Reference Website [1]. Since the layout of the website requires the user to manually download each teams data for every season, we downloaded a csv file for each datapoint. Then, we used a python script to read and format the data into a final csv (NFLData.csv). This data contains one column for each feature and one column for our labels. The features we used were derived from the csv data files that we downloaded. We average the data from each team's performance in the first 9 weeks of every season. These averages are saved in the data file along with a 1 or 0 in the label column. The 1 represents that team making the playoffs that season, and a 0 represents that team failing to make the playoffs that season. All features used from this dataset are floating point numbers. When reading from the data csv's coming from Pro Football Reference, we dropped data features like week (of the season), day of the week, and time of day as we do not think that these features would impact a team's playoff possibility. We also dropped the feature focused on whether or not that game went into overtime. A problem we ran into while processing data from these sources was the possibility a bye week falling within the first 9 weeks of the regular season. This was represented by a row of Nan entries. In order to clean these entries from our dataset, we loop through each csv file and remove a row if there is a Nan present. In order to better understand our data, we first reduced the dimensionality of our data to 3D and graphed to view any major discrepencies or unexepected patterns/outliers. The graph of our model is shown below:
 <p align="center">
-  <img src="/img/pca_data_graph.png" alt="PCA Visualization" style="width: 30%">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/pca_data_graph.png" alt="PCA Visualization" style="width: 30%">
 </p>
 An interesting characteristic of our dataset is the number of datapoints labeled with 1's vs the number of datapoints labeled with 0's. Because our dataset covers the past three years of every NFL team's season, there are more teams that do not make the playoffs (more 0's) then there are teams that make the playoffs (1's). This discrepency can affect the error in our model because our models could learn to classify every point as a 0 and still maintain an acceptable accuracy (above complete random 50/50). To address this problem, we believe that we need to get more data so that our model will be able to accurately classify points and not get trapped predicting all 0's. Our next goal is to add to our dataset by creating a webscraping script that automatically pulls the necessary data off the Pro Football Reference website and formats that labeled data into a csv. This would save a lot of manual labeling and pulling of data and allow us to greatly expand our dataset. If the problem persists even after the dataset is grown, we will most likely remove some datapoints that are labeled as 0's to ensure that approximately 50% are labeled 0 and 50% are labeled 1. 
 
@@ -33,7 +33,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Best-Case Logistic Regression with PCA: 
 </p>
 <p align="center">
-  <img src="/img/PCAGood.png" alt="PCAGood">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCAGood.png" alt="PCAGood">
 </p>
 
 ![GoodPCA](/img/PCAGood.png)
@@ -42,7 +42,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Worst-Case Logistic Regression with PCA: 
 </p>
 <p align="center">
-  <img src="/img/PCABad.png" alt="PCABad">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCABad.png" alt="PCABad">
 </p>
 
 ![BadPCA](/img/PCABad.png)
@@ -51,7 +51,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Best-Case Logistic Regression without PCA: 
 </p>
 <p align="center">
-  <img src="/img/LogRegGood.png" alt="LogRegGood">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegGood.png" alt="LogRegGood">
 </p>
 
 ![GoodLogReg](/img/LogRegGood.png)
@@ -60,7 +60,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Worst-Case Logistic Regression without PCA: 
 </p>
 <p align="center">
-  <img src="/img/LogRegBad.png" alt="LogRegBad">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegBad.png" alt="LogRegBad">
 </p>
 
 ![BadLogReg](/img/LogRegGood.png)
@@ -69,7 +69,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Best-Case Linear Regression without PCA: 
 </p>
 <p align="center">
-  <img src="/img/LinRegGood.png" alt="LinRegGood">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegGood.png" alt="LinRegGood">
 </p>
 
 ![GoodLinReg](/img/LinRegGood.png)
@@ -78,7 +78,7 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Worst-Case Linear Regression without PCA: 
 </p>
 <p align="center">
-  <img src="/img/LinRegBad.png" alt="LinRegBad">
+  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegBad.png" alt="LinRegBad">
 </p>
 
 ![BadLinReg](/img/LinRegBad.png)
