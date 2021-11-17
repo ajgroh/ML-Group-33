@@ -27,22 +27,22 @@ For our group project proposal we are trying to accurately predict the record fo
 Both Logistic Regression with PCA and Logistic Regression without PCA have variable accuracies between 0.667 and 0.91667 for our model, whereas Linear Regression without PCA has a bit lower worse-case of 0.625, and the same best-case of 0.91667. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
 Best-Case Logistic Regression with PCA:
-![GoodPCA](/img/export.png)
+![GoodPCA](/img/GoodPCA.png)
 
 Worst-Case Logistic Regression with PCA:
-![BadPCA](/img/export.png)
+![BadPCA](/img/BadPCA.png)
 
 Best-Case Logistic Regression without PCA:
-![GoodLogReg](/img/export.png)
+![GoodLogReg](/img/GoodLogReg.png)
 
 Worst-Case Logistic Regression without PCA:
-![BadLogReg](/img/export.png)
+![BadLogReg](/img/BadLogReg.png)
 
 Best-Case Linear Regression without PCA:
-![GoodLinReg](/img/export.png)
+![GoodLinReg](/img/GoodLinReg.png)
 
 Worst-Case Linear Regression without PCA:
-![BadLinReg](/img/export.png)
+![BadLinReg](/img/BadLinReg.png)
 
 Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. As previously stated in the Data Collection section, we will write a script in order to get more data from a less user-friendly website. We think this will have a huge impact on our model.
 
