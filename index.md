@@ -17,32 +17,41 @@ For this project we manually retreived our data from multiple datasets on the Pr
 An interesting characteristic of our dataset is the number of datapoints labeled with 1's vs the number of datapoints labeled with 0's. Because our dataset covers the past three years of every NFL team's season, there are more teams that do not make the playoffs (more 0's) then there are teams that make the playoffs (1's). This discrepency can affect the error in our model because our models could learn to classify every point as a 0 and still maintain an acceptable accuracy (above complete random 50/50). To address this problem, we believe that we need to get more data so that our model will be able to accurately classify points and not get trapped predicting all 0's. Our next goal is to add to our dataset by creating a webscraping script that automatically pulls the necessary data off the Pro Football Reference website and formats that labeled data into a csv. This would save a lot of manual labeling and pulling of data and allow us to greatly expand our dataset. If the problem persists even after the dataset is grown, we will most likely remove some datapoints that are labeled as 0's to ensure that approximately 50% are labeled 0 and 50% are labeled 1. 
 
 
-
-For our group project proposal we are trying to accurately predict the record for all 32 NFL teams/final standings before playoffs based on preseason results. We will also take into account other important aspects such as trades between seasons, prior home and away records, as well as head to heads. We felt making these types of predictions is important because predicting performance is very difficult and it’s important to find the best data that will give the most accurate output. Teams need these predictions to make changes to their roster, budget, as well as decide whether or not to settle for a higher draft pick. These predictions not only impact the franchises themselves but also companies that specialize in sports betting and fantasy. We will take into account overall record, rushing yards, passing yards, interceptions, sacks, and more. Based on the paper “Predicting Margin of Victory in NFL Games: Machine Learning vs. the Las Vegas Line”, we will also include relevant features such as points per game, points per game allowed, yards per game and yards per game allowed from the footballdb dataset. Because starting players during the regular season typically play for every game in the preseason, we believe that data from the preseason will provide helpful insights into regular season performance. Our approach is somewhat different as most power rankings are solely based on the previous season record. We believe that taking both previous season records and preseason records into account will give us more accurate results. One of our sources that we will be using is The Football Database which gives us stats from any season regular and preseason as well as detailed stats on every player and the overall game. We will evaluate our approach and results based on how closely our team record predictions are to the actual game records for the season. The timeline works well in that the regular season ends in January, therefore we will be able to see how our model is performing in real time. A few things that can definitely have an impact on our results are injuries and player trades during the season. It’s very hard to predict how a team will respond based on a key player injury. It might also be hard to adapt and change our method if, for example, a quarterback gets injured and there isn’t much data on the team’s second string quarterback. These unexpected events during the season could cause errors in the model. One possible solution to a problem like that could be looking at an injury from a previous season and seeing how teams were able to adjust by looking at their record and stats following that injury. In conclusion, we will use a recurrent neural network to predict regular season performance by training our model on preseason data. We chose an RNN as our model because this algorithm typically performs best on time series data (like preseason statistics over the past decade) and hopefully predict accurate season standings.
-
 ### Methods
 
 ### Results
 
 Both Logistic Regression with PCA and Logistic Regression without PCA have variable accuracies between 0.667 and 0.91667 for our model, whereas Linear Regression without PCA has a bit lower worse-case of 0.625, and the same best-case of 0.91667. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
-Best-Case Logistic Regression with PCA:
-![GoodPCA](/img/GoodPCA.png)
+<p align="center">
+  Best-Case Logistic Regression with PCA: </br>
+  <img src="/img/PCAGood.png" alt="GoodPCA">
+</p>
 
-Worst-Case Logistic Regression with PCA:
-![BadPCA](/img/BadPCA.png)
+<p align="center">
+  Worst-Case Logistic Regression with PCA: </br>
+  <img src="/img/PCABad.png" alt="BadPCA">
+</p>
 
-Best-Case Logistic Regression without PCA:
-![GoodLogReg](/img/GoodLogReg.png)
+<p align="center">
+  Best-Case Logistic Regression without PCA: </br>
+  <img src="/img/LogRegGood.png" alt="GoodLogReg">
+</p>
 
-Worst-Case Logistic Regression without PCA:
-![BadLogReg](/img/BadLogReg.png)
+<p align="center">
+  Worst-Case Logistic Regression without PCA: </br>
+  <img src="/img/LogRegBad.png" alt="BadLogReg">
+</p>
 
-Best-Case Linear Regression without PCA:
-![GoodLinReg](/img/GoodLinReg.png)
+<p align="center">
+  Best-Case Linear Regression without PCA: </br>
+  <img src="/img/LinRegGood.png" alt="GoodLinReg">
+</p>
 
-Worst-Case Linear Regression without PCA:
-![BadLinReg](/img/BadLinReg.png)
+<p align="center">
+  Worst-Case Linear Regression without PCA: </br>
+  <img src="/img/LinRegBad.png" alt="BadLinReg">
+</p>
 
 Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. As previously stated in the Data Collection section, we will write a script in order to get more data from a less user-friendly website. We think this will have a huge impact on our model.
 
@@ -56,41 +65,3 @@ So far, a couple of our models are producing quite impressive accuracies, but th
   [2] h <br/>
   [3] https://www.sportingnews.com/us/nfl/news/how-does-the-nfl-draft-work-rules-rounds-eligibility-and-more/o431yshp0l431e7543pcrzpg1 <br/>
 
-
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/rorbrow/MLtest/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rorbrow/MLtest/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
