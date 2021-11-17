@@ -26,40 +26,46 @@ An interesting characteristic of our dataset is the number of datapoints labeled
 Both Logistic Regression with PCA and Logistic Regression without PCA have variable accuracies between 0.667 and 0.91667 for our model, whereas Linear Regression without PCA has a bit lower worse-case of 0.625, and the same best-case of 0.91667. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
 <p align="center">
-  Best-Case Logistic Regression with PCA: </br>
-  
+  Best-Case Logistic Regression with PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCAGood.png" alt="GoodPCA">
 </p>
 
 ![GoodPCA](/img/PCAGood.png)
 
 <p align="center">
-  Worst-Case Logistic Regression with PCA: </br>
-  
+  Worst-Case Logistic Regression with PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCABad.png" alt="BadPCA">
 </p>
 
 <p align="center">
-  Best-Case Logistic Regression without PCA: </br>
-  
+  Best-Case Logistic Regression without PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegGood.png" alt="GoodLogReg">
 </p>
 
 <p align="center">
-  Worst-Case Logistic Regression without PCA: </br>
-  
+  Worst-Case Logistic Regression without PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegBad.png" alt="BadLogReg">
 </p>
 
 <p align="center">
-  Best-Case Linear Regression without PCA: </br>
-  
+  Best-Case Linear Regression without PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegGood.png" alt="GoodLinReg">
 </p>
 
 <p align="center">
-  Worst-Case Linear Regression without PCA: </br>
-  
+  Worst-Case Linear Regression without PCA: 
+</p>
+<p align="center">
   <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegBad.png" alt="BadLinReg">
 </p>
 
