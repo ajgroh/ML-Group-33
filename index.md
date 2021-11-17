@@ -21,6 +21,10 @@ An interesting characteristic of our dataset is the number of datapoints labeled
 
 ### Methods
 
+We downloaded CSV files from Pro Football Reference [1] and used a Python script to parse those CSV files, cleanse the data, and append it to the existing main dataset. We used Pandas to read the CSV into the dataframe and select the features from the dataset that we thought we most valuable to a team's performance based on our football knowledge. The features we used were: Offense Average Points Scored, Defense Average Points Allowed, Offense Average First Downs, Defense Average Allowed First Downs, Offense Average Yards, Defense Average Allowed Yards, Offense Average Pass Yards, Defense Average Allowed Pass Yards, Offense Average Rush Yards, Defense Average Allowed Rush Yards, Offense Average Turnovers, and Defense Average Turnovers. 
+
+For this project, we used multiple different models to try to create the most accurate and consistent predictions. First, we used PCA to reduce dimensions and visualize our data. Next, we tried two different supervised learning algorithms: Ridge Regression and Logistic Regression. We had to normalize our data before plugging it in to these models because the features were on different scales. (For example: One of our features, passing yards, is usually in the hundreds, whereas another feature, turnovers, is usually less than 7). All of our algorithms are used from the SKLearn library. We ran logistic regression on the dataset that had been dimensionally reduced by PCA, and also on a dataset that had all of its dimensions. This provided valuable information to see if we are overfitting when we include all of the features.
+
 ### Results
 
 Both Logistic Regression with PCA and Logistic Regression without PCA have variable accuracies between 0.667 and 0.91667 for our model, whereas Linear Regression without PCA has a bit lower worse-case of 0.625, and the same best-case of 0.91667. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
@@ -28,46 +32,38 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
 <p align="center">
   Best-Case Logistic Regression with PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCAGood.png" alt="GoodPCA">
-</p>
 
 ![GoodPCA](/img/PCAGood.png)
 
 <p align="center">
   Worst-Case Logistic Regression with PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/PCABad.png" alt="BadPCA">
-</p>
+
+![BadPCA](/img/PCABad.png)
 
 <p align="center">
   Best-Case Logistic Regression without PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegGood.png" alt="GoodLogReg">
-</p>
+
+![GoodLogReg](/img/LogRegGood.png)
 
 <p align="center">
   Worst-Case Logistic Regression without PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LogRegBad.png" alt="BadLogReg">
-</p>
+
+![BadLogReg](/img/LogRegGood.png)
 
 <p align="center">
   Best-Case Linear Regression without PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegGood.png" alt="GoodLinReg">
-</p>
+
+![GoodLinReg](/img/LinRegGood.png)
 
 <p align="center">
   Worst-Case Linear Regression without PCA: 
 </p>
-<p align="center">
-  <img src="https://github.com/ajgroh/ML-Group-33/blob/gh-pages/img/LinRegBad.png" alt="BadLinReg">
-</p>
+
+![BadLinReg](/img/LinRegBad.png)
 
 Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. As previously stated in the Data Collection section, we will write a script in order to get more data from a less user-friendly website. We think this will have a huge impact on our model.
 
