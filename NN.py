@@ -6,13 +6,12 @@ from sklearn.model_selection import train_test_split
 import tensorflow
 from keras.models import Sequential
 from tensorflow.keras.layers import Dense
-from sklearn import metrics
 from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
 
-file_name = "./Data/NFLData.csv"
+file_name = "./Data/MoreNFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1)  # random ordering of the data points
 x = df.to_numpy()[:, 0:12]
@@ -41,16 +40,15 @@ model.compile(loss='binary_crossentropy',
               optimizer='adam', metrics=['accuracy'])
 
 history = model.fit(Scaled_data, y, epochs=50,
-                    batch_size=10, verbose=1, validation_split=0.2)
-# print("HISTORY", history.history)
+                    batch_size=10, verbose=1, validation_split=0.25)
 
 
-# Plot history: MSE
-plt.plot(history.history['accuracy'], label='ACC (training data)')
+# Plot history: accuracy
+plt.plot(history.history['accuracy'], label='ACC (Training Data)')
 plt.plot(history.history['val_accuracy'],
-         label='ACC (validation data)')
-plt.title('ACC for NFL Postseason Appearance')
-plt.ylabel('ACC value')
+         label='ACC (Test Data)')
+plt.title('Accuracy for NFL Postseason Appearance')
+plt.ylabel('Accuracy')
 plt.xlabel('No. epoch')
 plt.legend(loc="upper left")
 plt.show()
