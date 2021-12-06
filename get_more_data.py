@@ -4,9 +4,11 @@ import csv
 
 pd.set_option('display.max_colwidth', 5000)
 
+week_num = 9
+
 ####### Write Header of CSV data file ##########
 column_names = ["PointsPerGame", "PointsAgainstPerGame", "Off1stDownsPerGame", "1stDownsGivenPerGame", "OffTotalYardsPerGame", "YardsGivenUpPerGame",
-                "OffPassYardsPerGame", "PassYardsGivenUpPerGame", "OffRushYardsPerGame", "RushYardsGivenUpPerGame", "OffTurnoversPerGame", "TurnoversCausedPerGame", "MadePlayoffs"]
+                "OffPassYardsPerGame", "PassYardsGivenUpPerGame", "OffRushYardsPerGame", "RushYardsGivenUpPerGame", "OffTurnoversPerGame", "TurnoversCausedPerGame", "WinRatio", "MadePlayoffs"]
 file_name = "./Data/MoreNFLData.csv"
 
 with open(file_name, 'w', newline="") as csv_file:
@@ -18,15 +20,13 @@ with open(file_name, 'w', newline="") as csv_file:
              "rai", "dal", "was", "phi", "nyg", "tam", "atl", "car", "nor", "gnb", "min", "chi", "det", "crd", "ram", "sfo", "sea"]
     years = ["2000", "2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009",
              "2010", "2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020"]
-    # 0 = didnt make playoffs, 1 = made playoffs
-    made_playoffs_data = []
 
     #######OPEN AND EDIT FILES##########
-    i = 0  # to index through label data
     for team in teams:
         for year in years:
             url = "https://www.pro-football-reference.com/teams/" + \
                 team + "/" + year + ".htm#games"
+
             try:
                 df = pd.read_html(url)[1]
             except:
@@ -41,7 +41,7 @@ with open(file_name, 'w', newline="") as csv_file:
                 made_playoffs = 0
 
             df = df.loc[:, ["Tm", "Opp", "1stD",
-                            "TotYd", "PassY", "RushY", "TO"]]
+                            "TotYd", "PassY", "RushY", "TO", "Rec"]]
 
             # removes the bye week row, if present
             for idx, row in df.iterrows():
@@ -49,7 +49,7 @@ with open(file_name, 'w', newline="") as csv_file:
                 if str(row["Opp"][0]) == "Bye Week":
                     df = df.drop(idx)
 
-            df = df.iloc[0:9, :]  # get the first 9 weeks
+            df = df.iloc[0:week_num, :]  # get the first n weeks
             # fills all nan values with 0
             df = df.fillna(0)
 
@@ -93,11 +93,13 @@ with open(file_name, 'w', newline="") as csv_file:
             def_avg_rushyd = def_total_rushyd/game_count
             off_avg_to = off_total_to/game_count
             def_avg_to = def_total_to/game_count
+            winloss = game[13]
+            winloss = winloss.split("-")
+            winratio = int(winloss[0]) / (int(winloss[0]) + int(winloss[1]))
 
             row = [off_avg_scored, def_avg_scored, off_avg_1std, def_avg_1std, off_avg_totyd, def_avg_totyd,
-                   off_avg_passyd, def_avg_passyd, off_avg_rushyd, def_avg_rushyd, off_avg_to, def_avg_to, made_playoffs]
+                   off_avg_passyd, def_avg_passyd, off_avg_rushyd, def_avg_rushyd, off_avg_to, def_avg_to, winratio, made_playoffs]
             csvwriter.writerow(row)
-        # csvwriter.close()
 
 
 ###### Now Data is setup #####
