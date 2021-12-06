@@ -9,7 +9,7 @@ from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-file_name = "./Data/NFLData.csv"
+file_name = "./Data/MoreNFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1)  # random ordering of the data points
 x = df.to_numpy()[:, 0:12]
@@ -28,7 +28,7 @@ print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
 
 
 ############# Logistic Regression ################
-num_iters = 1000
+num_iters = 10000
 reg = LogisticRegression(max_iter=num_iters)
 reg.fit(x_train, y_train)
 y_pred = reg.predict(x_test)
