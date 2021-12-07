@@ -38,9 +38,11 @@ class Logistic_Regression():
         reg = LogisticRegression(max_iter=num_iters)
         reg.fit(x_train, y_train)
 
+        y_pred = reg.predict(x_test)
         # print(type(reg.classes_))
 
-        return reg, x_test, y_test
+        # return reg, x_test, y_test
+        return metrics.accuracy_score(y_test, y_pred)
 
     def plot(self, model, x_test, y_test):
 

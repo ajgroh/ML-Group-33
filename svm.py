@@ -57,7 +57,7 @@ class SVM:
                 maxAuc = auc
         print("Max SVM Accuracy ", maxAcc, " with C value ",
               maxAccC, ". Corresponding AUC: ", maxAuc)
-        return clf
+        return maxAcc
 
         ##### Making hyperparameter plot ######
     def plot(self):
