@@ -14,10 +14,11 @@ import matplotlib.pyplot as plt
 
 
 class LinearRegression:
-    def __init__(self, x, y, max_iter=30000):
+    def __init__(self, x, y, max_iter=30000, alpha=.01):
         self.x = x
         self.y = y
         self.max_iter = max_iter
+        self.alpha = alpha
 
     def main(self):
         x_train, x_test, y_train, y_test = train_test_split(
@@ -26,7 +27,7 @@ class LinearRegression:
 
         ############# Linear Regression ################
 
-        model = Ridge(alpha=.01, max_iter=self.max_iter)
+        model = Ridge(alpha=self.alpha, max_iter=self.max_iter)
         model.fit(x_train, y_train)
         y_pred = model.predict(x_test)
         return r2_score(y_test, y_pred)

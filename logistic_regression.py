@@ -7,20 +7,6 @@ from sklearn import preprocessing
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
-# file_name = "./Data/MoreNFLData.csv"
-# df = pd.read_csv(file_name)
-# df = df.sample(frac=1)  # random ordering of the data points
-# x = df.to_numpy()[:, 0:13]
-
-# # Scale data before applying PCA
-# scaling = preprocessing.StandardScaler()
-
-# # Use fit and transform method
-# scaling.fit(x)
-# Scaled_data = scaling.transform(x)
-
-# y = df.to_numpy()[:, 13]
-
 
 class Logistic_Regression():
     def __init__(self, x, y, max_iter=10000):
@@ -34,8 +20,7 @@ class Logistic_Regression():
         # print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
 
         ############# Logistic Regression ################
-        num_iters = 10000
-        reg = LogisticRegression(max_iter=num_iters)
+        reg = LogisticRegression(max_iter=self.max_iter)
         reg.fit(x_train, y_train)
 
         y_pred = reg.predict(x_test)

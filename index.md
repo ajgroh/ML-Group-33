@@ -22,7 +22,7 @@ An interesting characteristic of our dataset is the number of datapoints labeled
 
 To address this problem, we realized that we need to get more data so that our model will be able to accurately classify points and not get trapped predicting all 0's. We then adjusted our focus to adding to our dataset by creating a webscraping script that automatically pulls the necessary data off the Pro Football Reference website and formats that labeled data into a csv. This saved us a lot of manual labeling and pulling of data and allowed us to greatly expand our dataset. The total number of datapoints went from 96 to 670. The script that we wrote allowed us to get seasonal data for every team in the NFL for every season between 2000 and 2020. There was one team, the Houston Texans, that didn't have data for 2000 or 2001, and this is because they did not have their NFL debut until 2002.
 
-Once we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so playing with the dataset was not too taxing. After running the new dataset through our algorithms a few times, we decided that we should add another feature to our dataset: Win Ratio.
+Once running our algorithms on the newly expanded dataset, we saw a pretty consistent accuracy, but it was lower than we were hoping, with the algorithiims averaging 75-80% accuracy. We took a closer look at the features we chose and the features available from the original dataset and decided that the win ratio is a valuable feature that could bring our models some higher accuracy. Because we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so adding the Win Ratio feature to our dataset was quite easy.
 
 ![Dataframe Info](/img/dfinfo.PNG)
 
@@ -44,7 +44,7 @@ The Ridge Regression model uses an alpha value of 0.01 and runs for 3,000 iterat
 
 ### Results
 
-Logistic Regression without PCA has decently stable accuracies between 0.857 and 0.887 for our model. Logistic Regression with PCA has a slightly lower accuracy in both cases: 0.792 worst case and 0.863 best case. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 and a worst case accuracy of 0.765 on the test set. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
+Logistic Regression without PCA performs well for our model with a best-case accuracy of 0.887. Logistic Regression with PCA has a slightly lower accuracy with a best case of 0.863. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 on the test set. The accuracies vary slightly because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
 <p align="center">
   Best-Case Logistic Regression with PCA: 
@@ -52,12 +52,7 @@ Logistic Regression without PCA has decently stable accuracies between 0.857 and
 
 ![GoodPCA](/img/PCAGood.png)
 Test Set Accuracy = 86.3%
-<p align="center">
-  Worst-Case Logistic Regression with PCA: 
-</p>
 
-![BadPCA](/img/PCABad.png)
-Test Set Accuracy = 79.2%
 <p align="center">
   Best-Case Logistic Regression without PCA: 
 </p>
@@ -65,12 +60,6 @@ Test Set Accuracy = 79.2%
 ![GoodLogReg](/img/log_reg_good.png)
 Test Set Accuracy = 88.7%
 
-<p align="center">
-  Worst-Case Logistic Regression without PCA: 
-</p>
-
-![BadLogReg](/img/log_reg_bad.png)
-Test Set Accuracy = 85.7%
 
 
 <p align="center">
@@ -80,12 +69,6 @@ Test Set Accuracy = 85.7%
 ![GoodNNPCA](/img/PCA_NN_Best.png)
 Test Set Accuracy = 81.48%
 
-<p align="center">
-  Worst-Case Neural Network with PCA: 
-</p>
-
-![BadNNPCA](/img/PCA_NN_bad.png)
-Test Set Accuracy = 76.5%
 
 <p align="center">
   Best-Case Neural Network without PCA: 
@@ -107,21 +90,30 @@ Test Set Accuracy = 79.8%
  
 ![Algorithm Accuracies](/img/algsum.PNG)
 
+We use the train_test_split method within sklearn's model_selection class to create our training and test sets from our data. We make 75% of our data set into training data points and the other 25% is used for testing (validation). We commonly use the ConfusionMatrix method within sklearn's metrics class to visualize how each model is classifying on our test (validation) set. This matrix allows us to easily visualize the false positives and false negatives in the model and helps us to understand if we are overfitting or underfitting. We also use plots of accuracy on the test set by number of iterations to decide on the appropriate number of iterations for each model to converge. These plots also help us visualize overfitting because we plot the curve for the training set accuracy as well as the test set accuracy. If the training set accuracy is very high but the test set accuracy remains low on the plot, then it is clear that we have overfit the data and need to either get more data or add regularization. In the 'Worst-Case Neural Network Without PCA' this trend is clearly shown as their is a gap in accuracy between the training and test set. To address this, we added a dropout layer to the neural network with a rate of 0.30. This regularization helped the test and training data performance converge to a higher average accuracy of around 0.83. There is still room for our models to improve, but we believe that we have tuned our models to their maximum potential given the dataset and features used.   
+
 ### Discussion
 
-It seems like we are experiencing overfitting a bit due to the variance in accuracy when running our model on different versions of the randomized dataset, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers with only 281 trainable parameters. When we made learning curves of networks with more trainable parameters, the overfitting got worse in our model. We added a dropout layer to our network to help us address the overfitting, but we were not able to generalize enough using regualrization to train a large fully-connected network on only 502 training datapoints.
+In order to improve our models (target accuracy of 95%), we believe that we need more data. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers with only 281 trainable parameters. When we made learning curves of networks with more trainable parameters, the overfitting got worse in our model. We added a dropout layer to our network to help us address the overfitting, but we were not able to generalize enough using regualrization to train a large fully-connected network on only 502 training datapoints.
 
 As shown in the results, performing PCA to reduce the dimensionality of our dataset before training a logistic regression model and neural network did not improve the accuracy. Principal Component Analysis enabled us to visualize the data which was helpful for understanding the grouping of our data in two dimensions. When the dimmensionality of the data was reduced, we most likely lost some information that related to the output of making the playoffs; therefore, it is understandable that the models performed worse when trained on the dimension-reduced data set. 
 
-The Support Vector Machine algorithm consistently performs the best on our dataset. We used learning curves to tune the hyperparamter C in order to maximize the accuracy on the test set for this model. As C increases in size, the model forms a smaller margin. We plotted C values ranging from 0.0001 to 100 to find which range created the best model for our data set. Based on our learning curves, we concluded that the SVM model performs best when C = 0.5. 
+It makes sense why PCA does not really work, as if you think about it, there is no "clear cut" way for a team to win a game of football. Some teams don't have a very strong offense, but their defense makes up for it, letting the team pull out a win. This would mean that the defensive features would have high importance for those teams making the playoffs. Other teams have horrible defenses with dominant offenses, giving an opposite image of feature importance. Therefore, when PCA is run, it likely removes some features that are not very important to the majority of the training set, but are still important to a lot of other datapoints, resulting in low test accuracy.
 
+The Support Vector Machine algorithm consistently performs the best on our dataset. We used learning curves to tune the hyperparamter C in order to maximize the accuracy on the test set for this model. As C increases in size, the model forms a smaller margin. We plotted C values ranging from 0.0001 to 100 to find which range created the best model for our data set. Based on our learning curves, we concluded that the SVM model performs best when C = 0.5. In addition to having the highest accuracy, SVM also has the lowest variance on our dataset. Therefore, SVM with an rbf kernel appears to be the best algorithm for fitting our problem given our dataset. 
 
+The next highest performance was logistic regression; however, both the logistic regression model and the neural network performed very similarly. Logistic regression had an average accuracy that was 0.7% higher than the neural network but also had a higher variance (0.000034 higher). The logistic regression model works well for this problem because it is a binary classification problem where our features are continuous variables. The neural network performs well because of the number of parameters that it trains. The model can fit complex trends in data because it trains a high number of parameters being a fully connected model. The limiting factor on our neural network performance is the size of the dataset. Because we only have 502 training datapoints, our neural network cannot adequately generalize when we train a large model with thousands of trainable parameters. 
+
+The worst performing model in our set was linear regression with an average R^2 value of 0.4703. A high performing ridge regression model achieves an R^2 value near 1. We believe that ridge regression does not fit our dataset well because of the extremely non-linear nature of the problem. SVM solves this by using a kernel and soft margin (which tolerates misclassifications), but linear regression struggles to fit the non-linear, complicated dataset. 
 
 
 
 ### Conclusion
 
-
+Hoping to predict NFL teams' playoff placement given their first 9 games, we web scraped NFL data from the past 20 years, cleansed the data, and put it through six different algorithms: Neural Network, Logistic Regression, Linear/Ridge Regression, Support Vector Machine, Neural Network with PCA, and Logistic Regression with PCA. Once increasing our dataset we saw an overall decrease in accuracy, which did not surprise us.
+In an attempt to increase our accuracy, we added a Win Ratio feature to the dataset, which worked well, increasing our accuracy by 5-10%. Before expanding our dataset, Logistic Regression without PCA gave us the best accuracy, averaging just below 80%. Once expanding our dataset, Support Vector Machine consistently gave us high accuracies, with an average accuracy just below 85%. 
+Since we have a relatively small dataset with only 670 datapoints, we used a Neural Network architecture that was more suited for smaller datasets. We realized that the curve flattened pretty quickly so only 50 epochs were needed.
+Although we are very happy with the accuracies we are getting, we have realized some of the difficulties of predicting NFL playoff placement. One thing that is hard to account for is the fact that there is no one team composition that will get an NFL team to the playoffs. This complicates Machine Learning algorithms, as features do not have uniform importance for each team's playoff chances. Thankfully, our models still performed quite well and have the potential to produce valuable information.
 
 ### References
   [1] https://www.pro-football-reference.com/ <br/>
