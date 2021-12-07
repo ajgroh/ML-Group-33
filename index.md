@@ -88,7 +88,7 @@ Test Set Accuracy = 79.8%
   Best-Case Support Vector Machine: 
 </p>
 
-![BestSVM](/img/bestSVM.PNG)
+![BestSVM](/img/bestSVM.png)
 Test Set Accuracy = 88.69%
 
 <p align="center">
