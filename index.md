@@ -89,6 +89,7 @@ Test Set Accuracy = 79.8%
 </p>
 
 ![BestSVM](/img/bestSVM.png)
+
 Test Set Accuracy = 88.69%
 
 <p align="center">
