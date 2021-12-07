@@ -74,20 +74,6 @@ Test Set Accuracy = 85.7%
 
 
 <p align="center">
-  Best-Case Neural Network without PCA: 
-</p>
-
-![GoodNN](/img/nn_best.png)
-Test Set Accuracy = 85.03%
-
-<p align="center">
-  Worst-Case Neural Network without PCA: 
-</p>
-
-![BadNN](/img/nn_worst.png)
-Test Set Accuracy = 79.8%
-
-<p align="center">
   Best-Case Neural Network with PCA: 
 </p>
 
@@ -100,6 +86,20 @@ Test Set Accuracy = 81.48%
 
 ![BadNNPCA](/img/PCA_NN_bad.png)
 Test Set Accuracy = 76.5%
+
+<p align="center">
+  Best-Case Neural Network without PCA: 
+</p>
+
+![GoodNN](/img/nn_best.png)
+Test Set Accuracy = 85.03%
+
+<p align="center">
+  Worst-Case Neural Network without PCA: 
+</p>
+
+![BadNN](/img/nn_worst.png)
+Test Set Accuracy = 79.8%
 
 
 Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers.
