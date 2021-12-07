@@ -127,3 +127,6 @@ Although we are very happy with the accuracies we are getting, we have realized 
   [1] https://www.pro-football-reference.com/ <br/>
   [2] https://www.sportingnews.com/us/nfl/news/how-does-the-nfl-draft-work-rules-rounds-eligibility-and-more/o431yshp0l431e7543pcrzpg1 <br/>
   [3] https://www.si.com/nfl/2021/01/09/nfl-expanded-playoffs-explained <br/>
+  
+### PS: Who is Making the Playoffs This Year?
+New England Patriots, Buffalo Bills, Tennessee Titans, Baltimore Ravens, Cleveland Browns, Denver Broncos, Dallas Cowboys, Tampa Bay Bucaneers, Carolina Panthers, New Orleans Saints, Green Bay Packers, Arizona Cardinals, and the Los Angeles Rams. These predictions were made using our SVM model.
