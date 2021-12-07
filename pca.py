@@ -15,8 +15,8 @@ from tensorflow.keras.layers import Dense
 file_name = "./Data/MoreNFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1)  # random ordering of the data points
-x = df.to_numpy()[:, 0:12]
-y = df.to_numpy()[:, 12]
+x = df.to_numpy()[:, 0:13]
+y = df.to_numpy()[:, 13]
 # Scale data before applying PCA
 scaling = StandardScaler()
 

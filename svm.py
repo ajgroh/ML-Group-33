@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 file_name = "./Data/MoreNFLData.csv"
 df = pd.read_csv(file_name)
 df = df.sample(frac=1)  # random ordering of the data points
-x = df.to_numpy()[:, 0:12]
+x = df.to_numpy()[:, 0:13]
 
 # Scale data before applying NN
 scaling = preprocessing.StandardScaler()
@@ -23,7 +23,7 @@ scaling = preprocessing.StandardScaler()
 scaling.fit(x)
 Scaled_data = scaling.transform(x)
 
-y = df.to_numpy()[:, 12]
+y = df.to_numpy()[:, 13]
 x_train, x_test, y_train, y_test = train_test_split(
     Scaled_data, y, test_size=0.25, random_state=42)
 print(x_train.shape, x_test.shape, y_train.shape, y_test.shape)
