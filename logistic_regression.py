@@ -22,7 +22,7 @@ import matplotlib.pyplot as plt
 # y = df.to_numpy()[:, 13]
 
 
-class LogisticRegression():
+class Logistic_Regression():
     def __init__(self, x, y, max_iter=10000):
         self.x = x
         self.y = y

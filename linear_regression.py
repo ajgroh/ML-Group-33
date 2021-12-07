@@ -1,7 +1,7 @@
 # ML Project
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import Ridge
-
+from sklearn import metrics
 from sklearn.metrics import r2_score, confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
@@ -29,7 +29,7 @@ class LinearRegression:
         model = Ridge(alpha=.01, max_iter=self.max_iter)
         model.fit(x_train, y_train)
         y_pred = model.predict(x_test)
-        print(r2_score(y_test, y_pred))
+        return r2_score(y_test, y_pred)
 
         # print(y_test)
         # print(y_pred)
