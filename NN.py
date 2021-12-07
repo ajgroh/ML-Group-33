@@ -3,11 +3,11 @@ import pandas as pd
 import numpy as np
 import csv
 from sklearn.model_selection import train_test_split
-import tensorflow
+# import tensorflow
 from keras.models import Sequential
-from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dense, Dropout
 from sklearn import preprocessing
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+# from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import matplotlib.pyplot as plt
 
 
@@ -33,6 +33,7 @@ y = df.to_numpy()[:, 13]
 model = Sequential()
 model.add(Dense(12, input_dim=13, activation='relu', kernel_regularizer='l2'))
 model.add(Dense(8, activation='relu', kernel_regularizer='l2'))
+model.add(Dropout(0.3))
 model.add(Dense(1, activation='sigmoid'))
 
 

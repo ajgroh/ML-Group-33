@@ -79,7 +79,7 @@ history = model.fit(x, y, epochs=50,
 plt.plot(history.history['accuracy'], label='ACC (Training Data)')
 plt.plot(history.history['val_accuracy'],
          label='ACC (Test Data)')
-plt.title('Accuracy for NFL Postseason Appearance')
+plt.title('Accuracy for NFL Postseason Appearance (PCA NN)')
 plt.ylabel('Accuracy')
 plt.xlabel('No. epoch')
 plt.legend(loc="upper left")
