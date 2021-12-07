@@ -24,6 +24,8 @@ To address this problem, we realized that we need to get more data so that our m
 
 Once we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so playing with the dataset was not too taxing. After running the new dataset through our algorithms a few times, we decided that we should add another feature to our dataset: Win Ratio.
 
+![Dataframe Info](/img/dfinfo.PNG)
+
 
 ### Methods
 
