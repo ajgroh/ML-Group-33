@@ -47,10 +47,11 @@ class NN:
 
         history = model.fit(self.x, self.y, epochs=50,
                             batch_size=10, verbose=1, validation_split=0.25)
+        # print(model.summary())
         return history
 
     def plot(self, history):
-        # print(model.summary())
+
         # Plot history: accuracy
         plt.plot(history.history['accuracy'], label='ACC (Training Data)')
         plt.plot(history.history['val_accuracy'],
