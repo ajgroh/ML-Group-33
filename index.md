@@ -44,7 +44,7 @@ The Ridge Regression model uses an alpha value of 0.01 and runs for 3,000 iterat
 
 ### Results
 
-Logistic Regression without PCA has decently stable accuracies between 0.857 and 0.887 for our model. Logistic Regression with PCA has a slightly lower accuracy with a best case of 0.863. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 and a worst case accuracy of 0.765 on the test set. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
+Logistic Regression without PCA performs well for our model with a best-case accuracy of 0.887. Logistic Regression with PCA has a slightly lower accuracy with a best case of 0.863. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 on the test set. The accuracies vary slightly because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
 <p align="center">
   Best-Case Logistic Regression with PCA: 
@@ -89,6 +89,8 @@ Test Set Accuracy = 79.8%
 </p>
  
 ![Algorithm Accuracies](/img/algsum.PNG)
+
+We use the train_test_split method within sklearn's model_selection class to create our training and test sets from our data. We make 75% of our data set into training data points and the other 25% is used for testing (validation). We commonly use the ConfusionMatrix method within sklearn's metrics class to visualize how each model is classifying on our test (validation) set. This matrix allows us to easily visualize the false positives and false negatives in the model and helps us to understand if we are overfitting or underfitting. We also use plots of accuracy on the test set by number of iterations to decide on the appropriate number of iterations for each model to converge. These plots also help us visualize overfitting because we plot the curve for the training set accuracy as well as the test set accuracy. If the training set accuracy is very high but the test set accuracy remains low on the plot, then it is clear that we have overfit the data and need to either get more data or add regularization. In the 'Worst-Case Neural Network Without PCA' this trend is clearly shown as their is a gap in accuracy between the training and test set. To address this, we added a dropout layer to the neural network with a rate of 0.30. This regularization helped the test and training data performance converge to a higher average accuracy of around 0.83. There is still room for our models to improve, but we believe that we have tuned our models to their maximum potential given the dataset and features used.   
 
 ### Discussion
 
