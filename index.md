@@ -22,7 +22,7 @@ An interesting characteristic of our dataset is the number of datapoints labeled
 
 To address this problem, we realized that we need to get more data so that our model will be able to accurately classify points and not get trapped predicting all 0's. We then adjusted our focus to adding to our dataset by creating a webscraping script that automatically pulls the necessary data off the Pro Football Reference website and formats that labeled data into a csv. This saved us a lot of manual labeling and pulling of data and allowed us to greatly expand our dataset. The total number of datapoints went from 96 to 670. The script that we wrote allowed us to get seasonal data for every team in the NFL for every season between 2000 and 2020. There was one team, the Houston Texans, that didn't have data for 2000 or 2001, and this is because they did not have their NFL debut until 2002.
 
-Once we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so playing with the dataset was not too taxing. After running the new dataset through our algorithms a few times, we decided that we should add another feature to our dataset: Win Ratio.
+Once running our algorithms on the newly expanded dataset, we saw a pretty consistent accuracy, but it was lower than we were hoping, with the algorithiims averaging 75-80% accuracy. We took a closer look at the features we chose and the features available from the original dataset and decided that the win ratio is a valuable feature that could bring our models some higher accuracy. Because we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so adding the Win Ratio feature to our dataset was quite easy.
 
 ![Dataframe Info](/img/dfinfo.PNG)
 
@@ -98,6 +98,8 @@ In order to improve our models (target accuracy of 95%), we believe that we need
 
 As shown in the results, performing PCA to reduce the dimensionality of our dataset before training a logistic regression model and neural network did not improve the accuracy. Principal Component Analysis enabled us to visualize the data which was helpful for understanding the grouping of our data in two dimensions. When the dimmensionality of the data was reduced, we most likely lost some information that related to the output of making the playoffs; therefore, it is understandable that the models performed worse when trained on the dimension-reduced data set. 
 
+It makes sense why PCA does not really work, as if you think about it, there is no "clear cut" way for a team to win a game of football. Some teams don't have a very strong offense, but their defense makes up for it, letting the team pull out a win. This would mean that the defensive features would have high importance for those teams making the playoffs. Other teams have horrible defenses with dominant offenses, giving an opposite image of feature importance. Therefore, when PCA is run, it likely removes some features that are not very important to the majority of the training set, but are still important to a lot of other datapoints, resulting in low test accuracy.
+
 The Support Vector Machine algorithm consistently performs the best on our dataset. We used learning curves to tune the hyperparamter C in order to maximize the accuracy on the test set for this model. As C increases in size, the model forms a smaller margin. We plotted C values ranging from 0.0001 to 100 to find which range created the best model for our data set. Based on our learning curves, we concluded that the SVM model performs best when C = 0.5. In addition to having the highest accuracy, SVM also has the lowest variance on our dataset. Therefore, SVM with an rbf kernel appears to be the best algorithm for fitting our problem given our dataset. 
 
 The next highest performance was logistic regression; however, both the logistic regression model and the neural network performed very similarly. Logistic regression had an average accuracy that was 0.7% higher than the neural network but also had a higher variance (0.000034 higher). The logistic regression model works well for this problem because it is a binary classification problem where our features are continuous variables. The neural network performs well because of the number of parameters that it trains. The model can fit complex trends in data because it trains a high number of parameters being a fully connected model. The limiting factor on our neural network performance is the size of the dataset. Because we only have 502 training datapoints, our neural network cannot adequately generalize when we train a large model with thousands of trainable parameters. 
@@ -106,11 +108,12 @@ The worst performing model in our set was linear regression with an average R^2 
 
 
 
-
-
 ### Conclusion
 
-
+Hoping to predict NFL teams' playoff placement given their first 9 games, we web scraped NFL data from the past 20 years, cleansed the data, and put it through six different algorithms: Neural Network, Logistic Regression, Linear/Ridge Regression, Support Vector Machine, Neural Network with PCA, and Logistic Regression with PCA. Once increasing our dataset we saw an overall decrease in accuracy, which did not surprise us.
+In an attempt to increase our accuracy, we added a Win Ratio feature to the dataset, which worked well, increasing our accuracy by 5-10%. Before expanding our dataset, Logistic Regression without PCA gave us the best accuracy, averaging just below 80%. Once expanding our dataset, Support Vector Machine consistently gave us high accuracies, with an average accuracy just below 85%. 
+Since we have a relatively small dataset with only 670 datapoints, we used a Neural Network architecture that was more suited for smaller datasets. We realized that the curve flattened pretty quickly so only 50 epochs were needed.
+Although we are very happy with the accuracies we are getting, we have realized some of the difficulties of predicting NFL playoff placement. One thing that is hard to account for is the fact that there is no one team composition that will get an NFL team to the playoffs. This complicates Machine Learning algorithms, as features do not have uniform importance for each team's playoff chances. Thankfully, our models still performed quite well and have the potential to produce valuable information.
 
 ### References
   [1] https://www.pro-football-reference.com/ <br/>
