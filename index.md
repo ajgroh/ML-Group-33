@@ -102,13 +102,11 @@ Test Set Accuracy = 85.03%
 Test Set Accuracy = 79.8%
 
 
-Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers.
+ 
 
 ### Discussion
 
-So far, a couple of our models are producing quite impressive accuracies, but the inconsistency lies in the randomization of test vs training data per iteration. As mentioned above, we are planning on writing a script in order to download even more data to cleanse and use for training and testing. We think that this will make the accuracies produced by the randomized test/training sets much more consistent, which will show us that our model is robust. 
-
-This new data may also change how accurate our current models are, and will likely cause us to reconsider our chosen algorithms and/or tweak hyperparameters. If we are still able to achieve high accuracy after adding all of this new data, we think it may be a good idea to try to reduce the number of weeks we use to predict the playoff appearances. If we are able to reduce the number of weeks, that would make our model even more useful, as the beneficiaries of this model would be able to make predictions even earlier in the season and a lot of the decisions made from this data are time sensitive.
+It seems like we are experiencing overfitting a bit due to the variance in accuracy when running our model on different versions of the randomized dataset, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers with only 281 trainable parameters. When we made learning curves of networks with more trainable parameters, the overfitting got worse in our model. We added a dropout layer to our network to help us address the overfitting, but we were not able to generalize enough using regualrization to train a large fully-connected network on only 502 training datapoints.
 
 
 ### References
