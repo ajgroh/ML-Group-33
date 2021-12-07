@@ -108,6 +108,17 @@ Test Set Accuracy = 79.8%
 
 It seems like we are experiencing overfitting a bit due to the variance in accuracy when running our model on different versions of the randomized dataset, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers with only 281 trainable parameters. When we made learning curves of networks with more trainable parameters, the overfitting got worse in our model. We added a dropout layer to our network to help us address the overfitting, but we were not able to generalize enough using regualrization to train a large fully-connected network on only 502 training datapoints.
 
+As shown in the results, performing PCA to reduce the dimensionality of our dataset before training a logistic regression model and neural network did not improve the accuracy. Principal Component Analysis enabled us to visualize the data which was helpful for understanding the grouping of our data in two dimensions. When the dimmensionality of the data was reduced, we most likely lost some information that related to the output of making the playoffs; therefore, it is understandable that the models performed worse when trained on the dimension-reduced data set. 
+
+The Support Vector Machine algorithm consistently performs the best on our dataset. We used learning curves to tune the hyperparamter C in order to maximize the accuracy on the test set for this model. As C increases in size, the model forms a smaller margin. We plotted C values ranging from 0.0001 to 100 to find which range created the best model for our data set. Based on our learning curves, we concluded that the SVM model performs best when C = 0.5. 
+
+
+
+
+
+### Conclusion
+
+
 
 ### References
   [1] https://www.pro-football-reference.com/ <br/>
