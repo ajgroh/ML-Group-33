@@ -60,13 +60,13 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
   Best-Case Logistic Regression without PCA: 
 </p>
 
-![GoodLogReg](/img/LogRegGood.png)
+![GoodLogReg](/img/log_reg_good.png)
 
 <p align="center">
   Worst-Case Logistic Regression without PCA: 
 </p>
 
-![BadLogReg](/img/LogRegGood.png)
+![BadLogReg](/img/log_reg_bad.png)
 
 <p align="center">
   Best-Case Linear Regression without PCA: 
