@@ -44,7 +44,7 @@ The Ridge Regression model uses an alpha value of 0.01 and runs for 3,000 iterat
 
 ### Results
 
-Logistic Regression without PCA has decently stable accuracies between 0.857 and 0.887 for our model. Logistic Regression with PCA has a slightly lower accuracy in both cases: 0.792 worst case and 0.863 best case. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 and a worst case accuracy of 0.765 on the test set. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
+Logistic Regression without PCA has decently stable accuracies between 0.857 and 0.887 for our model. Logistic Regression with PCA has a slightly lower accuracy with a best case of 0.863. The neural network trained on the reduced dimmension dataset has a best case accuracy of 0.815 and a worst case accuracy of 0.765 on the test set. The reason the accuracies vary is because we do not have static training and testing data sets. We randomize which part of our dataset is testing and which part is training each time we run the algorithm, which helps us see how robust our model is and if we are overfitting. 
 
 <p align="center">
   Best-Case Logistic Regression with PCA: 
@@ -52,12 +52,12 @@ Logistic Regression without PCA has decently stable accuracies between 0.857 and
 
 ![GoodPCA](/img/PCAGood.png)
 Test Set Accuracy = 86.3%
-<p align="center">
+<!-- <p align="center">
   Worst-Case Logistic Regression with PCA: 
 </p>
 
 ![BadPCA](/img/PCABad.png)
-Test Set Accuracy = 79.2%
+Test Set Accuracy = 79.2% -->
 <p align="center">
   Best-Case Logistic Regression without PCA: 
 </p>
@@ -65,13 +65,13 @@ Test Set Accuracy = 79.2%
 ![GoodLogReg](/img/log_reg_good.png)
 Test Set Accuracy = 88.7%
 
-<p align="center">
+<!-- <p align="center">
   Worst-Case Logistic Regression without PCA: 
 </p>
 
 ![BadLogReg](/img/log_reg_bad.png)
 Test Set Accuracy = 85.7%
-
+ -->
 
 <p align="center">
   Best-Case Neural Network with PCA: 
@@ -80,12 +80,12 @@ Test Set Accuracy = 85.7%
 ![GoodNNPCA](/img/PCA_NN_Best.png)
 Test Set Accuracy = 81.48%
 
-<p align="center">
+<!-- <p align="center">
   Worst-Case Neural Network with PCA: 
 </p>
 
 ![BadNNPCA](/img/PCA_NN_bad.png)
-Test Set Accuracy = 76.5%
+Test Set Accuracy = 76.5% -->
 
 <p align="center">
   Best-Case Neural Network without PCA: 
