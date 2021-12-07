@@ -61,13 +61,14 @@ Both Logistic Regression with PCA and Logistic Regression without PCA have varia
 </p>
 
 ![GoodLogReg](/img/log_reg_good.png)
+Test Set Accuracy = 88.7%
 
 <p align="center">
   Worst-Case Logistic Regression without PCA: 
 </p>
 
 ![BadLogReg](/img/log_reg_bad.png)
-
+Test Set Accuracy = 85.7%
 <p align="center">
   Best-Case Linear Regression without PCA: 
 </p>
