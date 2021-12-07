@@ -36,7 +36,7 @@ The Ridge Regression model uses an alpha value of 0.01 and runs for 3,000 iterat
   Neural Network Description: 
 </p>
 
-![NN](/img/PCAGood.png)
+![NN](/img/nn_summary.png)
 
 
 
