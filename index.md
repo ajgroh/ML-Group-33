@@ -51,13 +51,13 @@ Logistic Regression without PCA has decently stable accuracies between 0.857 and
 </p>
 
 ![GoodPCA](/img/PCAGood.png)
-
+Test Set Accuracy = 86.3%
 <p align="center">
   Worst-Case Logistic Regression with PCA: 
 </p>
 
 ![BadPCA](/img/PCABad.png)
-
+Test Set Accuracy = 79.2%
 <p align="center">
   Best-Case Logistic Regression without PCA: 
 </p>
