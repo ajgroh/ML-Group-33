@@ -24,8 +24,6 @@ To address this problem, we realized that we need to get more data so that our m
 
 Once we had the script to web scrape all of this data and create a CSV file, we were able to quickly modify our features. The script takes roughly 2 minutes to get all of the data and create the CSV file, so playing with the dataset was not too taxing. After running the new dataset through our algorithms a few times, we decided that we should add another feature to our dataset: Win Ratio.
 
-![Dataframe Info](/img/dfinfo.PNG)
-
 
 ### Methods
 
@@ -102,7 +100,7 @@ Test Set Accuracy = 81.48%
 Test Set Accuracy = 76.5%
 
 
-Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. As previously stated in the Data Collection section, we will write a script in order to get more data from a less user-friendly website. We think this will have a huge impact on our model.
+Right now it seems like we are experiencing overfitting a bit due to the variance in accuracy, and this is likely due to our limited dataset. We have written a python script to scrape data from the website which has increased the size of our dataset greatly; however, we still do not have enough data to train a very large model that can fit the intracacies of this complicated problem well. For example, our neural network is only 4 layers. 
 
 ### Discussion
 
