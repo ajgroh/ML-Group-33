@@ -21,11 +21,11 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 
 ############# Linear Regression ################
-max_iter = 3000
+max_iter = 30000
 model = Ridge(alpha=.01, max_iter=max_iter)
 model.fit(x_train, y_train)
 y_pred = model.predict(x_test)
-print(r2_score(y_pred, y_test))
+print(r2_score(y_test, y_pred))
 
 # print(y_test)
 # print(y_pred)
