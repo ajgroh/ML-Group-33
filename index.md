@@ -101,8 +101,11 @@ Test Set Accuracy = 85.03%
 ![BadNN](/img/nn_worst.png)
 Test Set Accuracy = 79.8%
 
-
+<p align="center">
+  Comparing Accuracy of Algorithms: 
+</p>
  
+![Algorithm Accuracies](/img/algsum.PNG)
 
 ### Discussion
 
